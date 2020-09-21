@@ -1,0 +1,19 @@
+# Ticket creation form
+Title: Objet
+User: Utilisateur
+Priority: Priorité
+Date start: Date de l'incident
+Date end: Date de fin
+Ticket state: Etat
+Description: Description
+
+# User creation form
+Firstname: Prénom
+Lastname: Nom
+Address: Adresse
+City: Ville
+Postal code: Code postal
+Phone: Téléphone
+Mail: Email
+Username: Nom d'utilisateur
+Password: Mot de passe

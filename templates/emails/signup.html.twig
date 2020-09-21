@@ -1,0 +1,5 @@
+{# templates/emails/signup.html.twig #}
+<h1>Bienvenue {{ user.firstname }} {{ user.lastname }} !</h1>
+<p>Votre identifiant : {{ user.username }}</p>
+<p>Votre mot de passe: {{ user.password }}</p>
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">Cliquez ici pour créer votre mot de passe</a>

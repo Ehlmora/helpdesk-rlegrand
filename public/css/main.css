@@ -1,0 +1,138 @@
+:root {
+
+}
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #ecf0f1;
+}
+
+main {
+    padding: 0;
+    max-width: 100%;
+}
+
+tr {
+    line-height: 25px;
+    min-height: 25px;
+    height: 25px;
+}
+
+.body-bg-gradient {
+    background: linear-gradient(#03A9F4, #2196F3);
+    background-repeat: no-repeat;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    background: linear-gradient(#03A9F4, #2196F3)
+}
+
+.sidebar-sticky {
+    position: sticky;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar-heading {
+    text-transform: uppercase;
+    color: #90CAF9;
+    font-size: 0.8em;
+}
+
+.sidebar-divider {
+    background-color: #90CAF9;
+}
+
+thead th {
+    text-transform: uppercase;
+    color: #78909C;
+    font-size: 0.8em;
+}
+
+tbody tr {
+    border-top: 1px solid #ECEFF1!important;
+    border-bottom: 1px solid #ECEFF1!important;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    color: white;
+}
+
+.nav-link {
+    color: #ecf0f1;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, .2);
+    color: #ecf0f1;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, .2);
+    color: #ecf0f1;
+}
+
+.fas {
+    color: #bdc3c7;
+}
+
+.fas:hover {
+    color: #95a5a6;
+}
+
+.form-control {
+    border-radius: 2rem!important;
+}
+
+.card-login {
+    border: 0;
+    border-radius: 1rem!important;
+}
+
+.btn-primary {
+    border-radius: 100px;
+    background-color: #2196F3;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    scrollbar-color: rgba(0, 0, 0, 0.3);
+}
+
+form.login .btn-primary {
+    border-radius: 100px;
+    background-color: #2196F3;
+    margin-top: 20px;
+}
+
+form.login {
+    text-align: center;
+}
+
+label.required:after {
+    content: " *";
+    color: red;
+    font-weight: bold;
+}
+
+/* DataTables */
+table.dataTable.no-footer, table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 1px solid #ECEFF1!important;
+}
+
+table.dataTable tr {
+    border-top: 1px solid #ECEFF1!important;
+    border-bottom: 1px solid #ECEFF1!important;
+}
+

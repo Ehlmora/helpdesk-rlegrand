@@ -1,0 +1,13 @@
+<nav class="navbar sticky-top bg-light flex-md-nowrap pt-4 pb-4 shadow">
+    <h6>{% block title %}{% endblock %}
+    {% if app.user %}
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="new-link" href="{{ path('logout') }}">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+</nav>
+

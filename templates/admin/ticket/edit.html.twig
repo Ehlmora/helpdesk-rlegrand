@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition du ticket n°{{ ticket.id }}{% endblock %}
+
+{% block body %}
+
+<div class="col-lg-6">
+    <div class="card shadow m-3">
+        <div class="card-header">
+            <h6>{{ block('title') }}</h6>
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-12">{{ form_row(form.title) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{{ form_row(form.user) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">{{ form_row(form.dateStart) }}</div>
+                    <div class="col-6">{{ form_row(form.dateEnd) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">{{ form_row(form.priority) }}</div>
+                    <div class="col-6">{{ form_row(form.ticketState) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-12">{{ form_row(form.description) }}</div>
+                </div>
+                <button class="btn btn-primary btn-block">Modifier</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

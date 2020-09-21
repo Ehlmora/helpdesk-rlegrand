@@ -1,0 +1,17 @@
+<h1>Bonjour !</h1>
+
+<p>
+    Vous avez demandé la réinitialisation de votre mot de passe. Pour choisir un nouveau mot de passe, veuillez cliquer 
+    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">ici</a>.
+    (Ce lien expire dans {{ tokenLifetime|date('g') }} heures..)
+    <br>
+    Si vous n'avez pas fait de demande de réinitialisation, veuillez ignorer se mail.
+</p>
+
+<p>
+    A bientôt !
+</p>
+
+<hr>
+
+<p>Ceci est un message automatisé, veuillez ne pas y répondre. Pour contacter l'administration, veuillez utiliser le formulaire de contact disponible sur le site <a href="https://rlegrand.fr">rlegrand.fr</a></p>

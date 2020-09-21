@@ -1,0 +1,7 @@
+{#{% if ticketState.id == 1 %}#}
+    <span class="badge badge-success">{{row}}</span>
+{#{% elseif ticketState.id == 2 %}
+    <span class="badge badge-warning">{{ ticketState.name }}</span>
+{% else %}
+    <span class="badge badge-secondary">{{ ticketState.name }}</span>
+{% endif %}#}

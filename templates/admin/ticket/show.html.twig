@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% import 'macro.html.twig' as mac %}
+
+{% block title %}Afficher un ticket{% endblock %}
+
+{% block body %}
+
+{% if ticket == null %}
+    <p>Le ticket n'existe pas</p>
+{% else %}
+<div class = "card shadow m-3">
+<div class = "card-header">
+        <h6>Ticket n°{{ ticket.id }}</h6>
+    </div>
+    <div   class = "card-body">
+    <div   class = "table-responsive">
+    <table class = "table">
+                <tbody>
+                    <tr>
+                        <th scole = "row">Client</th>
+                        <td>{{ ticket.user.firstname }} {{ ticket.user.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <th scole = "row">Objet</th>
+                        <td>{{ ticket.title }}</td>
+                    </tr>
+                    <tr>
+                        <th scole = "row">Etat</th>
+                        <td>{{ mac.stateBadge(ticket.ticketState)}}</td>
+                    </tr>
+                    <tr>
+                        <th scole = "row">Priorité</th>
+                        <td>{{ ticket.priority }}</td>
+                    </tr>
+                    <tr>
+                        <th scole = "row">Date de début</th>
+                        <td>{{ ticket.dateStart | date("m/d/Y") }}</td>
+                    </tr>
+                    <tr>
+                        <th scole = "row">Date de fin</th>
+                        <td>
+                            {% if ticket.dateEnd == null %}
+                                /
+                            {% else %}
+                                {{ ticket.dateEnd | date("m/d/Y") }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scole = "row">Description</th>
+                        <td>{{ ticket.description }}</td>
+                    </tr>
+                </tody>
+            </table>
+            <a href = "{{ path('admin.ticket.edit', { id:ticket.id }) }}" class = "btn btn-primary">
+                Modifier
+            </a>
+            {#{% if ticket.TicketState.id == 1 %}
+                <a href = "{{ path('admin.ticket.changeState', {id: ticket.id}) }}" class = "btn btn-warning">
+                    Passer "En cours"
+                </a>
+            {% elseif ticket.ticketState.id == 2 %}
+                <a href = "{{ path('admin.ticket.changeState', {id: ticket.id}) }}" class = "btn btn-secondary">
+                    Archiver
+                </a>
+            {% endif %}#}
+        </div>
+    </div>
+</div>
+{# Historique #}
+<div class = "card shadow m-3">
+<div class = "card-header">
+        <h6>Historique</h6>
+    </div>
+    <div class = "card-body">
+        {% if ticket_log is empty %}
+            <div class = "text-center">
+                <h6>Pas de modification à afficher</h6>
+                <a href = "{{ path('admin.ticket.edit', { id: ticket.id }) }}" class = "btn btn-primary">Modifier le ticket</a>
+            </div>
+        {% else %}
+            <div class = "table-responsive">
+                <div>
+                    <table class = "table table-hover table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope = "col">Modifié le</th>
+                                <th scope = "col">Valeur modifiée</th>
+                                <th scope = "col">Ancienne valeur</th>
+                                <th scope = "col">Nouvelle valeur</th>
+                                <th scope = "col">Modifié par</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for log in ticket_log %}
+                                <tr>
+                                    <td>{{ log.updatedAt | date("m/d/Y")                        }}</th>
+                                    <td>{{ log.changedValue                                     }}</th>
+                                    <td>{{ log.oldValue                                         }}</th>
+                                    <td>{{ log.newValue                                         }}</th>
+                                    <td>{{ log.updatedBy.firstname }} {{ log.updatedBy.lastname }}</th>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

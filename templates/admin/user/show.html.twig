@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% import 'macro.html.twig' as mac %}
+
+{% block title %}Afficher un client{% endblock %}
+
+{% block body %}
+
+{% if user == null %}
+    <p>Le client n'existe pas</p>
+{% else %}
+<div class="row">
+    <div class="col-6">
+        <div class="card shadow m-3">
+            <div class="card-header">
+                <h6>Utilisateur n°{{ user.id }}</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Prénom</th>
+                                <td>{{ user.firstname }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Nom</th>
+                                <td>{{ user.lastname }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Adresse</th>
+                                <td>{{ user.address }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Ville</th>
+                                <td>{{ user.city }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Code postal</th>
+                                <td>{{ user.postalCode }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Téléphone</th>
+                                <td>{{ user.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">E-mail</th>
+                                <td>{{ user.mail }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Description</th>
+                                <td>{{ user.description }}</td>
+                            </tr>
+                        </tody>
+                    </table>
+                </div>
+            </div>
+            <a href="{{ path('admin.user.edit', {id: user.id}) }}" class="btn btn-primary btn-block">Modifier</a>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card shadow m-3">
+            <div class="card-header">
+                <h6>Mes tickets</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div>
+                        <p>Filtres...</p>
+                    </div>
+                    <div>
+                        <table class="table table-hover table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col">N° Ticket</th>
+                                    <th scope="col">Objet</th>
+                                    <th scope="col">Etat</th>
+                                    <th scope="col">Priorité</th>
+                                    <th scope="col">Date de début</th>
+                                    <th scope="col">Date de fin</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col" colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ticket in tickets %}
+                                    <tr>
+                                        <th scope="row">{{ ticket.id            }}</th>
+                                        <td>{{ ticket.title                     }}</td>
+                                        <td>{{ mac.stateBadge(ticket.ticketState)}}</td>
+                                        <td>{{ ticket.priority                  }}</td>
+                                        <td>{{ ticket.dateStart | date("m/d/Y") }}</td>
+                                        <td>
+                                            {% if ticket.dateEnd == null %}
+                                                /
+                                            {% else %}
+                                                {{ ticket.dateEnd | date("m/d/Y") }}
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ ticket.description               }}</td>
+                                        <td>
+                                            <a href="{{ path('admin.ticket.show', {id: ticket.id}) }}">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('admin.ticket.edit', {id: ticket.id}) }}">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
